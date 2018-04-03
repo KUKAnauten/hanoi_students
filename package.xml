@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>hanoi_students</name>
+  <version>0.0.0</version>
+  <description>Solving Hanoi towers with an iiwa</description>
+  
+  <maintainer email="herrlauch@gmail.com">Marcus Ebner</maintainer>
+
+  <license>BSD</license>
+
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>control_msgs</build_depend>
+  <build_depend>iimoveit</build_depend>
+  <build_depend>iiwa_description</build_depend>
+  <build_depend>iiwa_moveit</build_depend>
+  <build_depend>iiwa_msgs</build_depend>
+  <build_depend>moveit_msgs</build_depend>
+  <build_depend>moveit_ros_planning_interface</build_depend>
+  <build_depend>moveit_visual_tools</build_depend>
+  <build_depend>robotiq_s_model_control</build_depend>#
+  <build_depend>robotiq_ethercat</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>rosmsg</build_depend>
+  <!--build_depend>descartes_moveit</build_depend>
+  <build_depend>descartes_trajectory</build_depend>
+  <build_depend>descartes_planner</build_depend-->
+  <build_depend>tf</build_depend>
+  <build_depend>tf2</build_depend>
+  <build_export_depend>control_msgs</build_export_depend>
+  <build_export_depend>iimoveit</build_export_depend>
+  <build_export_depend>iiwa_description</build_export_depend>
+  <build_export_depend>iiwa_moveit</build_export_depend>
+  <build_export_depend>iiwa_msgs</build_export_depend>
+  <build_export_depend>moveit_msgs</build_export_depend>
+  <build_export_depend>moveit_ros_planning_interface</build_export_depend>
+  <build_export_depend>moveit_visual_tools</build_export_depend>
+  <build_export_depend>robotiq_s_model_control</build_export_depend>
+  <build_export_depend>robotiq_ethercat</build_export_depend>
+  <build_export_depend>roscpp</build_export_depend>
+  <build_export_depend>rosmsg</build_export_depend>
+  <!--build_export_depend>descartes_moveit</build_export_depend>
+  <build_export_depend>descartes_trajectory</build_export_depend>
+  <build_export_depend>descartes_planner</build_export_depend-->
+  <build_export_depend>tf</build_export_depend>
+  <build_export_depend>tf2</build_export_depend>
+  <exec_depend>control_msgs</exec_depend>
+  <exec_depend>iimoveit</exec_depend>
+  <exec_depend>iiwa_description</exec_depend>
+  <exec_depend>iiwa_moveit</exec_depend>
+  <exec_depend>iiwa_msgs</exec_depend>
+  <exec_depend>moveit_msgs</exec_depend>
+  <exec_depend>moveit_ros_planning_interface</exec_depend>
+  <exec_depend>moveit_visual_tools</exec_depend>
+  <exec_depend>robotiq_s_model_control</exec_depend>
+  <exec_depend>robotiq_ethercat</exec_depend>
+  <exec_depend>roscpp</exec_depend>
+  <exec_depend>rosmsg</exec_depend>
+  <!--exec_depend>descartes_moveit</exec_depend>
+  <exec_depend>descartes_trajectory</exec_depend>
+  <exec_depend>descartes_planner</exec_depend-->
+  <exec_depend>tf</exec_depend>
+  <exec_depend>tf2</exec_depend>
+
+
+  <!-- The export tag contains other, unspecified, tags -->
+  <export>
+    <!-- Other tools can request additional information be placed here -->
+
+  </export>
+</package>

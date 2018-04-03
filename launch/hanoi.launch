@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<launch>
+    
+  <arg name="robot_name" default="iiwa"/>
+  <!-- Model of the iiwa to use : iiwa7, iiwa14 -->
+  <arg name="model" default="iiwa14"/>
+  <arg name="debug" default="false"/>
+
+  <group ns="$(arg robot_name)" unless="$(arg debug)">
+    <node name="hanoi" pkg="hanoi_students" type="hanoi" respawn="false" output="screen">
+      <remap from="output" to="/robotiq_s_model_gripper_node/output" />
+      <remap from="input" to="/robotiq_s_model_gripper_node/input" />
+    </node>
+  </group>
+
+  <group ns="$(arg robot_name)" if="$(arg debug)">
+    <node name="hanoi" pkg="hanoi_students" type="hanoi" respawn="false" output="screen" launch-prefix="xterm -e gdb --args">
+      <remap from="output" to="/robotiq_s_model_gripper_node/output" />
+      <remap from="input" to="/robotiq_s_model_gripper_node/input" />
+    </node>
+  </group>
+
+</launch>

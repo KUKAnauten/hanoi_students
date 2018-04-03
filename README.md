@@ -13,3 +13,11 @@ Euer Workspace heißt __hanoi\_ws__ und befindet sich unter __/home/mlab8/ROS/__
 # Ausführen des Codes
 ## Starten der ROS-Umgebung und benögtiter Nodes
 Um das geschriebene Programm auszuführen, müssen zuerst die \[STRG\]
+
+1. Roboter hochgefahren
+2. Im Dateibrowser zum ws -> Rechtsklick, Terminal hier öffnen
+3. roscore
+4. neuer tab, sudoros, dann roslaunch robotiq_s_model_control s_model_ethercat.launch
+5. neuer tab, roslaunch iiwa14_s_model_moveit run_move_group.launch [sim:=false]
+6. Falls sim:=false -> RobotApplication auf SmartPad starten
+7. neuer tab, roslaunch hanoi_students hanoi.launch
