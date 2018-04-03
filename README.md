@@ -4,7 +4,7 @@ Im Rahmen dieses Versuchs soll das Knobelspiel [Türme von Hanoi](https://de.wik
 Ziel des Rätsels ist, einen Stapel Scheiben von einem Turm zu einem anderen zu verschieben und bei jedem Zug stets nur eine Scheibe zu verschieben. Weiterhin dürfen Scheiben nur auf einen leeren Stab oder auf einem mit einer größeren Scheibe abgelegt werden.
 
 # Umgebung
-Als Roboter wird hier der _KUKA iiwa_ verwendet, der einen _Robotiq_ Dreifingergreifer montiert hat. Das Gesamtsystem ist in einer [ROS](http://www.ros.org/ "ROS-website")-Umgebung eingebunden. Dabei handelt es sich um ein Software-Framework, in dem einzelne Prozesse, sogenannte _Nodes_ bestimmte Aufgaben wie Hardwareabstraktion oder reine Datenverarbeitung übernehmen können und sich über Nachrichten austauschen können. Die einzelnen Prozesse/Aufgaben sind in Paketen organisiert. Hierbei werden [Robotiq](https://github.com/ros-industrial/robotiq)-Pakete zur Ansteuerung des Greifers über EtherCAT und Pakete des [iiwa_Stacks](https://github.com/IFL-CAMP/iiwa_stack) zur Ansteuerung des Roboters verwendet. Zur Bahnplanung des Roboters wird das [MoveIt! Motion Planning Framework](https://moveit.ros.org/) verwendet. Um die Einarbeitungszeit zu verkürzen und verschiedene Ansteuerungsarten des Roboters vereinheitlicht zu verwenden, wurden die benötigten Funktionen von uns noch weiter abstrahiert und stehen in der Klasse _RobotInterface_ im Paket [iimoveit](https://github.com/KUKAnauten/iimoveit) zur Verfügung. **TODO Link zur Doku, Codegerüst vorgegeben**
+Als Roboter wird hier der _KUKA iiwa_ verwendet, der einen _Robotiq_ Dreifingergreifer montiert hat. Das Gesamtsystem ist in einer [ROS](http://www.ros.org/ "ROS-website")-Umgebung eingebunden. Dabei handelt es sich um ein Software-Framework, in dem einzelne Prozesse, sogenannte _Nodes_ bestimmte Aufgaben wie Hardwareabstraktion oder reine Datenverarbeitung übernehmen können und sich über Nachrichten austauschen können. Die einzelnen Prozesse/Aufgaben sind in Paketen organisiert. Hierbei werden [Robotiq](https://github.com/ros-industrial/robotiq)-Pakete zur Ansteuerung des Greifers über EtherCAT und Pakete des [iiwa_Stacks](https://github.com/IFL-CAMP/iiwa_stack) zur Ansteuerung des Roboters verwendet. Zur Bahnplanung des Roboters wird das [MoveIt! Motion Planning Framework](https://moveit.ros.org/) verwendet. Um die Einarbeitungszeit zu verkürzen und verschiedene Ansteuerungsarten des Roboters vereinheitlicht zu verwenden, wurden die benötigten Funktionen von uns noch weiter abstrahiert und stehen in der Klasse _RobotInterface_ im Paket [iimoveit](https://github.com/KUKAnauten/iimoveit) zur Verfügung. Eine Verknüpfung zur Dokumentation der API befindet sich im Paketordner von __hanoi\_students__ (siehe übernächster Absatz).
 
 In ROS arbeitet man in sogenannten _Workspaces_. Für diesen Versuch wurde bereits ein Workspace eingerichtet, in dem die oben beschriebenen Pakete bereits enthalten sind. Auch wurde ein Paket erstellt, in dem sich der _Node_ befindet, der den Roboter und den Greifer steuern soll. Der Code dieses Nodes muss von Euch vervollständigt werden, sodass der Roboter die Türme von Hanoi erfolgreich löst.
 
@@ -12,12 +12,17 @@ Euer Workspace heißt __hanoi\_ws__ und befindet sich unter __/home/mlab8/ROS/__
 
 # Ausführen des Codes
 ## Starten der ROS-Umgebung und benögtiter Nodes
-Um das geschriebene Programm auszuführen, müssen zuerst die \[STRG\]
+Um das geschriebene Programm auszuführen, müssen zuerst die benötigten Nodes gestartet werden. Dazu geht man wie folgt vor:
 
-1. Roboter hochgefahren
-2. Im Dateibrowser zum ws -> Rechtsklick, Terminal hier öffnen
-3. roscore
-4. neuer tab, sudoros, dann roslaunch robotiq_s_model_control s_model_ethercat.launch
-5. neuer tab, roslaunch iiwa14_s_model_moveit run_move_group.launch [sim:=false]
-6. Falls sim:=false -> RobotApplication auf SmartPad starten
-7. neuer tab, roslaunch hanoi_students hanoi.launch
+1. Falls mit dem echten Roboter gearbeitet werden soll, muss zuerst der Roboter hochgefahren werden
+2. Im Dateibrowser zum Workspace wechseln, Rechtsklick in einen leeren Bereich -> Terminal hier öffnen
+3. Als erstes wird per `roscore` der Hauptprozess von ROS gestartet
+4. Mit \[STRG\]+\[SHIFT\]+\[TAB\] einen neuen Tab öffnen, dann über den Befehl `sudoros` Adminrechte für dieses Terminal erlangen und mit diesen dann per `roslaunch robotiq_s_model_control s_model_ethercat.launch` den Node zur Steuerung des Greifers starten. Hier kann es gut sein, dass die EtherCAT Verbindung nicht aufgebaut wird. Dann muss man so lange den Befehl ausführen (mit der Pfeil-nach-oben-Taste den letzten Befehl in den Eingabebereich holen und mit Return bestätigen), bis die Meldung kommt, dass ein Slave gefunden und konfiguriert wurde.
+4. Neuen Tab öffnen, per `roslaunch iiwa14_s_model_moveit run_move_group.launch` alle nötigen Nodes und Konfigurierungen starten, um den Roboter anzusteuern. Fall mit dem echten Roboter gearbeitet werden soll, muss an den Befehl ein `sim:=false` angehängt werden!
+6. Falls im vorherigen Schritt `sim:=false` gesetzt wurde, muss jetzt die RobotApplication "ROSSmartServo" über das SmartPad des Roboters gestartet werden.
+7. Als Nächstes könnt ihr nun euren Node starten, siehe nächster Abschnitt
+
+## Kompilieren und Starten des Hanoi Nodes
+Habt ihr euren Code geändert, müsst ihr ihn erst kompilieren (sowie assemblen und linken). Dazu öffnet ihr wieder einen neuen Tab und führt darin den Befehl `catkin build hanoi_students` aus. Enthält euer Code Fehler, wird der Compiler dies anzeigen und ihr müsst diese erst beheben.
+
+Ist der Code (syntaktisch) fehlerfrei, könnt ihr ihn mit dem Befehl `roslaunch hanoi_students hanoi.launch` ausführen.
