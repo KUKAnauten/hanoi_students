@@ -94,13 +94,37 @@ public:
     }
   }
 
-  void addTowersToPlanningScene() {
+  void planAndMoveAboveTower(bool approvalRequired = true) {
+    geometry_msgs::PoseStamped current_pose = getPose();
+    double difference = current_pose.pose.position.z - tower_poses_[0].pose.position.z - 0.133;
+    if (difference < 0) {
+      current_pose.pose.position.z -= difference;
+      planAndMove(current_pose, approvalRequired);
+    }
+  }
 
+  void planAndMoveToBasePose(bool approvalRequired = true) {
+    planAndMoveAboveTower(approvalRequired);
+    RobotInterface::planAndMoveToBasePose(approvalRequired);
   }
 
   geometry_msgs::PoseStamped getTowerPose(int index) {
     assert(index >= 0 && index <= 2);
     return tower_poses_[index];
+  }
+
+  void checkPoses() {
+    for (int i = 0; i < 3; ++i) {
+      geometry_msgs::PoseStamped pose = tower_poses_[i];
+      pose.pose.position.z += 0.13;
+      planAndMove(pose, true);
+
+      pose.pose.position.z -= 0.13;
+      planAndMove(pose, true);
+
+      pose.pose.position.z += 0.13;
+      planAndMove(pose, true);
+    }
   }
   
   void gripperInit() {
@@ -136,29 +160,6 @@ public:
     gripper.setRawPosition(45);
     gripper.write();
     waitForGripper();
-  }
-
-  void checkPoses() {
-    for (int i = 0; i < 3; ++i) {
-      geometry_msgs::PoseStamped pose = tower_poses_[i];
-      pose.pose.position.z += 0.13;
-      planAndMove(pose, true);
-
-      pose.pose.position.z -= 0.13;
-      planAndMove(pose, true);
-
-      pose.pose.position.z += 0.13;
-      planAndMove(pose, true);
-    }
-  }
-
-  void planAndMoveAboveTower(bool approvalRequired = true) {
-    geometry_msgs::PoseStamped current_pose = getPose();
-    double difference = current_pose.pose.position.z - tower_poses_[0].pose.position.z - 0.133;
-    if (difference < 0) {
-      current_pose.pose.position.z -= difference;
-      planAndMove(current_pose, approvalRequired);
-    }
   }
 
   void moveSlice(int from, int to) {
@@ -225,11 +226,6 @@ public:
       moveSlice(from, to);
       moveTower(height-1, with, to, from);
     }
-  }
-
-  void planAndMoveToBasePose(bool approvalRequired = true) {
-    planAndMoveAboveTower(approvalRequired);
-    RobotInterface::planAndMoveToBasePose(approvalRequired);
   }
 };
 } // namespace hanoi
