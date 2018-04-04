@@ -172,7 +172,7 @@ public:
       pose_above_from.position.z -= 0.01;
       waypoints.push_back(pose_above_from);
     }
-    moveAlongCartesianPathInWorldCoords(waypoints, 0.01, 0, true, false);
+    moveAlongCartesianPathInWorldCoords(waypoints, 0.01, 0, true, true);
 
     gripperClose();
     tower_nSlices_[from]--;
@@ -202,13 +202,13 @@ public:
       pose_to.position.z -= 0.01;
       waypoints.push_back(pose_to);
     }
-    moveAlongCartesianPathInWorldCoords(waypoints, 0.01, 0, true, false);
+    moveAlongCartesianPathInWorldCoords(waypoints, 0.01, 0, true, true);
     move_group_.clearPathConstraints();
 
     gripperOpen();
 
     pose_to.position.z += 0.03;
-    planAndMove(pose_to, false);
+    planAndMove(pose_to, true);
 
     tower_nSlices_[to]++;
   }
@@ -222,15 +222,6 @@ public:
       moveTower(height-1, from, with, to);
       moveSlice(from, to);
       moveTower(height-1, with, to, from);
-    }
-    else if (height < 0) {
-      for (int i = 0; i < 3; ++i) {
-        geometry_msgs::PoseStamped pose_above_from = tower_poses_[i];
-        pose_above_from.pose.position.z += 0.15;
-        planAndMove(pose_above_from, true);
-        planAndMove(tower_poses_[i], true);
-        planAndMove(pose_above_from, true);
-      }
     }
   }
 
@@ -277,7 +268,7 @@ int main(int argc, char **argv)
   hanoi_robot.waitForApproval();
 
   hanoi_robot.moveTower(3, 0, 2, 1);
-  hanoi_robot.planAndMoveToBasePose(false);
+  hanoi_robot.planAndMoveToBasePose(true);
   
   ros::shutdown();
   return 0;
