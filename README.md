@@ -18,7 +18,7 @@ ___Achtung!___ Methoden, die mit _publish_ oder _run_ beginnen, sollen im Rahmen
 Zum Bewegen sollten momentan am besten nur die Methoden `planAndMove`, `planAndMoveToBasePose` sowie `moveAlongCartesianPathInWorldCoords` verwendet werden. Diese sind zur durchführung des Versuchs ausreichend und andere Methoden befinden sich noch in experimentellem Status.
 
 # Ausführen des Codes
-## Starten der ROS-Umgebung und benögtiter Nodes
+## Starten der ROS-Umgebung und benötigter Nodes
 Um das geschriebene Programm auszuführen, müssen zuerst die benötigten Nodes gestartet werden. Dazu geht man wie folgt vor:
 
 1. Falls mit dem echten Roboter gearbeitet werden soll, muss zuerst der Roboter hochgefahren werden
