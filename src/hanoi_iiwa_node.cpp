@@ -250,10 +250,10 @@ int main(int argc, char **argv)
   tow0_pose.pose.orientation.z = 0.00855197;
   tow0_pose.pose.orientation.w = 0.0091728;
 
-  geometry_msgs::PoseStamped tow1_pose = tow0_pose;
+  //geometry_msgs::PoseStamped tow1_pose;
   //tow1_pose.pose.position.XYZ = ???
 
-  geometry_msgs::PoseStamped tow2_pose = tow1_pose;
+  //geometry_msgs::PoseStamped tow2_pose = tow0_pose;
   //tow2_pose.pose.position.XYZ = ???
 
   hanoi::HanoiRobot hanoi_robot(&node_handle, "manipulator", base_pose_jointSpace, 3, 0.01);
