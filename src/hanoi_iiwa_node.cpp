@@ -177,6 +177,7 @@ public:
     gripperClose();
     tower_nSlices_[from]--;
 
+    /*
     moveit_msgs::OrientationConstraint ocm;
     ocm.link_name = move_group_.getEndEffectorLink();
     geometry_msgs::PoseStamped current_pose = getPose();
@@ -192,6 +193,7 @@ public:
     moveit_msgs::Constraints constraints;
     constraints.orientation_constraints.push_back(ocm);
     move_group_.setPathConstraints(constraints);
+    */
 
     std::reverse(waypoints.begin(), waypoints.end());
 
@@ -203,7 +205,7 @@ public:
       waypoints.push_back(pose_to);
     }
     moveAlongCartesianPathInWorldCoords(waypoints, 0.01, 0, true, true);
-    move_group_.clearPathConstraints();
+    //move_group_.clearPathConstraints();
 
     gripperOpen();
 
@@ -244,9 +246,9 @@ int main(int argc, char **argv)
 
   geometry_msgs::PoseStamped tow0_pose;
   tow0_pose.header.frame_id = "world";
-  tow0_pose.pose.position.x = 0.634;
+  tow0_pose.pose.position.x = 0.64;
   tow0_pose.pose.position.y = -0.283443;
-  tow0_pose.pose.position.z = 0.961;
+  tow0_pose.pose.position.z = 0.96;
   tow0_pose.pose.orientation.x = 0.963151;
   tow0_pose.pose.orientation.y = 0.26867;
   tow0_pose.pose.orientation.z = 0.00855197;
