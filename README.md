@@ -22,8 +22,11 @@ In ROS arbeitet man in sogenannten _Workspaces_. Für diesen Versuch wurde berei
 
 Euer Workspace heißt __hanoi\_ws__ und befindet sich unter __/home/mlab8/ROS/__. Ihr werdet nur die Datei __hanoi\_iiwa\_node.cpp__ bearbeiten, die sich im Ordner __src__ des Pakets __hanoi\_students__ befindet. Diese kann mit einem Texteditor eurer Wahl geöffnet werden. Vorinstalliert ist Sublime Text, der auch Syntax Highlighting beherrscht.
 
-# Schreiben des Programms
-## Programmstruktur
+# Vorbereitung
+
+# Versuchsnachmittag
+## Schreiben des Programms
+### Programmstruktur
 Zur Durchführung der Aufgabe wurde die Klasse `HanoiRobot` erstellt, die alle Methoden von [RobotInterface](https://htmlpreview.github.io/?https://raw.githubusercontent.com/KUKAnauten/iimoveit/master/doc/html/c%2B%2B/classiimoveit_1_1RobotInterface.html "RobotInterface API") erbt.
 
 ___Achtung!___ Methoden, die mit _publish_ oder _run_ beginnen, sollen im Rahmen dieses Versuchs jedoch ignoriert werden, denn hierbei wird der Bahnplanungsschritt umgangen und kann zu unkontrollierbarem Verhalten führen! MoveIt! kann zwar Trajektorien berechnen, die Kollisionen vermeiden, jedoch müssen dazu Objekte über Sensoren erkannt werden oder per Hand in die Planungsumgebung eingefügt werden. Dies ist in unserer Umgebung noch nicht der Fall, weshalb geplante Bewegungen vor der Ausführung bestätigt werden müssen und auch zuerst im Simulator Gazebo geprüft werden sollen.
@@ -33,18 +36,18 @@ Zum Bewegen sollten momentan am besten nur die Methoden `planAndMove`, `planAndM
 
 Die Methode `moveTower` soll den Algorithmus enthalten und dabei die Methode `moveSlice` verwenden, in der der Roboter eine Scheibe von einem zum anderen Stab bewegen soll. Zu beachten ist, dass beim Bewegen des Roboters mit `planAndMove` nur die Anfangs- und Endpose vorgegeben sind. dazwischen bewegt sich der Roboter nicht auf einer geraden Linie, sondern so, wie es von den Gelenken am besten passt - dabei gibt es natürlich unendlich viele Lösungen, jenachdem, mit welchem Gütemaßen man die Planung durchführt. Weiterhin hält der Roboter bei Erreichen der Zielpose an, anstatt bestimmte Wegpunkte einfach zu durchfahren.
 
-## Verwendung von `planAndMove`und `moveAlongCartesianPathInWorldCoords`
+### Verwendung von `planAndMove`und `moveAlongCartesianPathInWorldCoords`
 Diese Methoden sollen zur Bewegungsplanung- und Durchführung verwendet werden. `planAndMove` erwartet eine `geometry_msgs::Pose` als Parameter und `moveAlongCartesianPathInWorldCoords` einen `std::vector<geometry_msgs::Pose>`, was etwa einer `List` in Java entspricht. Das ist dann nützlich, wenn man den Roboter entlang einer Bahn bewegen will, oder wenn der Roboter Wegpunkte ohne anzuhalten abfahren soll. Da der Roboter die Stäbe nicht abknicken soll, wenn er eine Scheibe gegriffen hat, oder wenn er sich zwischen zwei Stäben bewegt, sollten hier dem Roboter besser explizit Wegpunkte angegeben werden. Vor allem beim entnehmen einer Scheibe von einem Stapel sollten dem Roboter Wegpunkte entlang des Stabs in Zentimeterabständen angegeben werden, bis er genügend Abstand vom Stab hat. Die Parameter `eef_step` und `jump_threshold` sollen zu `0.01` und `0.0` gesetzt werden.
 
 Die Klasse `HanoiRobot` enthält die Membervariablen `base_pose_` und ein Array `tower_poses_`. Darin sind die Endeffektorposen des Roboters gespeichert, bei denen sich der Greifer entweder oberhalb des mittleren Stabs oder (mit den Fingerspitzen) auf Höhe der untersten Scheibe einer der drei Türme befindet. Auf diese kann man in den Methoden zugreifen, um diese Posen anzufahren, oder ausgehend von diesen andere Posen zu berechnen. Diese sind als `geometry_msgs::PoseStamped` gespeichert. Es reicht jedoch aus, nur den Member `pose` davon zu verwenden, dieser ist vom Typ `geometry_msgs::Pose`.
 
 Die Klasse `Pose`, ist eine von ROS-Messages abgeleitete, automatisch generiert Klasse. Sie enthält die Membervariablen `position` und `orientation`. Dabei enthält `position` wiederum die _doubles_ `x`, `y` und `z`, welche die Translation einer Pose in Weltkoordinaten darstellen. Das Weltkoordinatensystem befindet sich auf dem Boden unter der Basis des Roboters. `orientation` enthält weiterhin die Variablen `x`, `y`, `z` und `w`, die die Orientierung der Pose als [Quaternion](http://www.mathepedia.de/Quaternionen.html "Mathepedia - Quaternionen") darstellen.
 
-# Setzen der Turmposen und der Basispose
+## Setzen der Turmposen und der Basispose
 Die Basispose, bei der sich der Endeffektor oberhalb aller Türme befindet, und die Pose des Turm 0 (wenn man auf den Roboter schaut, der linke Turm) werden bereits in der `main`-Funktion gesetzt. Die Basispose ist in Gelenkwinkeln angegeben, da diese Darstellung eindeutig ist. So ist sichergestellt, dass der Roboter aus einer Ausgangslage agiert, aus der er nicht so schnell in die Gelenkwinkelbegrenzungen gelangt. Wegen der Redundanz (der Roboter hat 7 Freiheitsgrade) kann eine Pose im kartesischen Raum (6 Freiheitsgrade) durch verschiedene Kombinationen von Gelenkwinkeln erreicht werden. Sie müssen zur ordnungsgemäßen Funktion des Codes noch die Pose der zwei weiteren Türme setzen (in der `main`-Funktion die auskommentierten Zeilen durch richtigen Code ersetzen).
 
-# Ausführen des Codes
-## Starten der ROS-Umgebung und benötigter Nodes
+## Ausführen des Codes
+### Starten der ROS-Umgebung und benötigter Nodes
 Um das geschriebene Programm auszuführen, müssen zuerst die benötigten Nodes gestartet werden. Dazu geht man wie folgt vor:
 
 1. Falls mit dem echten Roboter gearbeitet werden soll, muss zuerst der Roboter hochgefahren werden
@@ -55,7 +58,7 @@ Um das geschriebene Programm auszuführen, müssen zuerst die benötigten Nodes 
 6. Falls im vorherigen Schritt `sim:=false` gesetzt wurde, muss jetzt die RobotApplication "ROSSmartServo" über das SmartPad des Roboters gestartet werden. Ansonsten wurde die Simulationssoftware Gazebo gestartet, in der ihr sehen könnt, wie sich der Roboter vorraussichtlich bewegen wird.
 7. Als Nächstes könnt ihr nun euren Node starten, siehe nächster Abschnitt
 
-## Kompilieren und Starten des Hanoi Nodes
+### Kompilieren und Starten des Hanoi Nodes
 Habt ihr euren Code geändert, müsst ihr ihn erst kompilieren (sowie assemblen und linken). Dazu öffnet ihr wieder einen neuen Tab und führt darin den Befehl `catkin build hanoi_students` aus. Enthält euer Code Fehler, wird der Compiler dies anzeigen und ihr müsst diese erst beheben.
 
 Ist der Code (syntaktisch) fehlerfrei übersetzt worden, könnt ihr ihn mit dem Befehl `roslaunch hanoi_students hanoi.launch` ausführen.
