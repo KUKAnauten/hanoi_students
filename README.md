@@ -1,7 +1,7 @@
-# Autorenschaft
+# 1. Autorenschaft
 Diese Anleitung und Einführung ist geschrieben von Laura Bielenberg, Romol Chadda, Marcus Ebner und Markus Hessinger.
 
-# Einleitung
+# 2. Einleitung
 Im Rahmen dieses Versuchs soll das Knobelspiel [Türme von Hanoi](https://de.wikipedia.org/wiki/T%C3%BCrme_von_Hanoi "Wikipedia: Türme von Hanoi") mit einem Roboterarm mit sieben Freiheitsgraden gelöst werden. Dazu muss nicht nur ein Algorithmus zur Lösung des theoretischen Problems implementiert werden, sondern auch die Schwierigkeiten gelöst werden, die bei der Bedienung eines Roboters bei einer solchen Aufgabenstellung entstehen.
 
 Ziel des Rätsels ist, einen Stapel Scheiben von einem Turm zu einem anderen zu verschieben und bei jedem Zug stets nur eine Scheibe zu verschieben. Weiterhin dürfen Scheiben nur auf einen leeren Stab oder auf einem mit einer größeren Scheibe abgelegt werden.
@@ -27,7 +27,7 @@ Für das Arbeiten mit und an dem Roboter sind einige Grundlagen der Roboik notwe
 
 ## Vorbereitungsaufgaben
 
-# Versuchsnachmittag
+# 3. Versuchsnachmittag
 ## Schreiben des Programms
 ### Programmstruktur
 Zur Durchführung der Aufgabe wurde die Klasse `HanoiRobot` erstellt, die alle Methoden von [RobotInterface](https://htmlpreview.github.io/?https://raw.githubusercontent.com/KUKAnauten/iimoveit/master/doc/html/c%2B%2B/classiimoveit_1_1RobotInterface.html "RobotInterface API") erbt.
@@ -68,4 +68,4 @@ Ist der Code (syntaktisch) fehlerfrei übersetzt worden, könnt ihr ihn mit dem 
 
 Im Fenster der Visualisierungssoftware RViz seht ihr dann die geplanten Bewegungen. Wenn für einen Befehl der Wert `approvalRequired` auf `true` gesetzt wurde, wird die Bewegung jedoch nicht ausgeführt. Ist man sich sicher, dass die Bewegung Kollisionsfrei durchgeführt werden kann, klickt man dann in RViz auf _Next_.
 
-# Quellen
+# 4. Quellen
