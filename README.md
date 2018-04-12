@@ -15,9 +15,17 @@ Des Weiteren verfügt der Roboter über mehrere Betriebsmodi. Im positionsgerege
 
 Für den Praktikumsversuch wird als Manipulator ein Dreifingergreifer von _Robotiq_ verwendet, der vormontiert ist.
 
-## 2.2 Umgebung
-Das Gesamtsystem ist in einer [ROS](http://www.ros.org/ "ROS-website")-Umgebung eingebunden. Dabei handelt es sich um ein Software-Framework, in dem einzelne Prozesse, sogenannte _Nodes_ bestimmte Aufgaben wie Hardwareabstraktion oder reine Datenverarbeitung übernehmen können und sich über Nachrichten austauschen können. Die einzelnen Prozesse/Aufgaben sind in Paketen organisiert. Hierbei werden [Robotiq](https://github.com/ros-industrial/robotiq)-Pakete zur Ansteuerung des Greifers über EtherCAT und Pakete des [iiwa_Stacks](https://github.com/IFL-CAMP/iiwa_stack) zur Ansteuerung des Roboters verwendet. Zur Bahnplanung des Roboters wird das [MoveIt! Motion Planning Framework](https://moveit.ros.org/) verwendet. Um die Einarbeitungszeit zu verkürzen und verschiedene Ansteuerungsarten des Roboters vereinheitlicht zu verwenden, wurden die benötigten Funktionen von uns noch weiter abstrahiert und stehen in der Klasse _RobotInterface_ im Paket [iimoveit](https://github.com/KUKAnauten/iimoveit) zur Verfügung. Eine Verknüpfung zur Dokumentation der API befindet sich im Paketordner von __hanoi\_students__ (siehe übernächster Absatz) oder ist [hier zu erreichen](https://htmlpreview.github.io/?https://raw.githubusercontent.com/KUKAnauten/iimoveit/master/doc/html/c%2B%2B/classiimoveit_1_1RobotInterface.html "RobotInterface API").
+## 2.2 ROS-Umgebung
+Das Gesamtsystem ist in einer [ROS](http://www.ros.org/ "ROS-website")-Umgebung eingebunden. Dies ist ein Open-Source Software-Framework für Roboteranwendungen. Es ermöglicht durch die Nutzung seiner Vielzahl an Software-Bibliotheken, Werkzeugen und Konventionen die Erstellung robuster und komplexer plattformunabhängiger Anwendungen für die Robotik. Durch seine freie Verfügbarkeit und Modularität können einzelne Programmteile von seinen Nutzern hinzugefügt, erweitert und flexibel für ihre Anwendungsfälle genutzt und kombiniert werden, wodurch die kollaborative Weiterentwicklung von Robotiksoftware gefördert wird. Im vorliegenden Fall wurde die Distribution Kinetic Kame verwendet.
 
+Das Gesamtsystem ist in einer [ROS](http://www.ros.org/ "ROS-website")-Umgebung eingebunden. Dabei handelt es sich um ein Software-Framework, in dem einzelne Prozesse, sogenannte _Nodes_ bestimmte Aufgaben wie Hardwareabstraktion oder reine Datenverarbeitung übernehmen können und sich über Nachrichten austauschen können. Die einzelnen Prozesse/Aufgaben sind in Paketen organisiert.
+
+### 2.2.1 Architektur
+
+### 2.2.2 Workspace
+Hierbei werden [Robotiq](https://github.com/ros-industrial/robotiq)-Pakete zur Ansteuerung des Greifers über EtherCAT und Pakete des [iiwa_Stacks](https://github.com/IFL-CAMP/iiwa_stack) zur Ansteuerung des Roboters verwendet. Zur Bahnplanung des Roboters wird das [MoveIt! Motion Planning Framework](https://moveit.ros.org/) verwendet. Um die Einarbeitungszeit zu verkürzen und verschiedene Ansteuerungsarten des Roboters vereinheitlicht zu verwenden, wurden die benötigten Funktionen von uns noch weiter abstrahiert und stehen in der Klasse _RobotInterface_ im Paket [iimoveit](https://github.com/KUKAnauten/iimoveit) zur Verfügung. Eine Verknüpfung zur Dokumentation der API befindet sich im Paketordner von __hanoi\_students__ (siehe übernächster Absatz) oder ist [hier zu erreichen](https://htmlpreview.github.io/?https://raw.githubusercontent.com/KUKAnauten/iimoveit/master/doc/html/c%2B%2B/classiimoveit_1_1RobotInterface.html "RobotInterface API").
+
+### 2.2.2 Workspace
 In ROS arbeitet man in sogenannten _Workspaces_. Für diesen Versuch wurde bereits ein Workspace eingerichtet, in dem die oben beschriebenen Pakete bereits enthalten sind. Auch wurde ein Paket erstellt, in dem sich der _Node_ befindet, der den Roboter und den Greifer steuern soll. Der Code dieses Nodes muss von Euch vervollständigt werden, sodass der Roboter die Türme von Hanoi erfolgreich löst.
 
 Euer Workspace heißt __hanoi\_ws__ und befindet sich unter __/home/mlab8/ROS/__. Ihr werdet nur die Datei __hanoi\_iiwa\_node.cpp__ bearbeiten, die sich im Ordner __src__ des Pakets __hanoi\_students__ befindet. Diese kann mit einem Texteditor eurer Wahl geöffnet werden. Vorinstalliert ist Sublime Text, der auch Syntax Highlighting beherrscht.
@@ -26,6 +34,7 @@ Euer Workspace heißt __hanoi\_ws__ und befindet sich unter __/home/mlab8/ROS/__
 Für das Arbeiten mit und an dem Roboter sind einige Grundlagen der Roboik notwendig. In diesem Abschnitt wird kanpp auf die relevanten Grundlagen eingegangen. Für tiefergehendes Verständnis wird auf [] verwiesen.
 
 ## 2.4 Vorbereitungsaufgaben
+
 
 # 3. Versuchsnachmittag
 ## 3.1 Programmstruktur
