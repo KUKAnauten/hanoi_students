@@ -26,9 +26,10 @@ Die Interprozesskommunikation findet über sogenannte Topics, Services und Actio
 ### 2.2.2 Dateisystem
 Den Grundbaustein des Dateisystems stellen die sogenannten Packages dar, in welchen die in ROS genutzten Softwarebausteine organisiert sind. Sie können diverse Elemente wie Datensätze, Bibliotheken, Konfigurationsdateien oder Nodes enthalten, welche als gemeinsamer Baustein zur Verfügung gestellt werden sollen. Ihnen verdankt ROS somit seine Modularität. Mehrere zusammengehörige Packages lassen sich auch in einem Metapackage (_Stack_) zusammenfassen. Beispielsweise werden [Robotiq](https://github.com/ros-industrial/robotiq)-Pakete zur Ansteuerung des Greifers über EtherCAT und Pakete des [iiwa_Stacks](https://github.com/IFL-CAMP/iiwa_stack) zur Ansteuerung des Roboters verwendet.
 
+### 2.2.3 Bewegungsplanung mit MoveIt!
 Zur Bahnplanung des Roboters wird das [MoveIt! Motion Planning Framework](https://moveit.ros.org/) verwendet. Um die Einarbeitungszeit zu verkürzen und verschiedene Ansteuerungsarten des Roboters vereinheitlicht zu verwenden, wurden die benötigten Funktionen von uns noch weiter abstrahiert und stehen in der Klasse _RobotInterface_ im Paket [iimoveit](https://github.com/KUKAnauten/iimoveit) zur Verfügung. Eine Verknüpfung zur Dokumentation der API befindet sich im Paketordner von __hanoi\_students__ (siehe übernächster Absatz) oder ist [hier zu erreichen](https://htmlpreview.github.io/?https://raw.githubusercontent.com/KUKAnauten/iimoveit/master/doc/html/c%2B%2B/classiimoveit_1_1RobotInterface.html "RobotInterface API").
 
-### 2.2.2 Workspace
+### 2.2.4 Workspace
 In ROS arbeitet man in sogenannten _Workspaces_. Für diesen Versuch wurde bereits ein Workspace eingerichtet, in dem die oben beschriebenen Pakete bereits enthalten sind. Auch wurde ein Paket erstellt, in dem sich der _Node_ befindet, der den Roboter und den Greifer steuern soll. Der Code dieses Nodes muss von Euch vervollständigt werden, sodass der Roboter die Türme von Hanoi erfolgreich löst.
 
 Euer Workspace heißt __hanoi\_ws__ und befindet sich unter __/home/mlab8/ROS/__. Ihr werdet nur die Datei __hanoi\_iiwa\_node.cpp__ bearbeiten, die sich im Ordner __src__ des Pakets __hanoi\_students__ befindet. Diese kann mit einem Texteditor eurer Wahl geöffnet werden. Vorinstalliert ist Sublime Text, der auch Syntax Highlighting beherrscht.
