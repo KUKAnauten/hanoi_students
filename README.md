@@ -1,6 +1,9 @@
 # Autorenschaft
 Diese Anleitung und Einführung ist geschrieben von:
-Laura Bielenberg, Romol Chadda, Marcus Ebner und Markus Hessinger
+Laura Bielenberg
+Romol Chadda
+Marcus Ebner
+Markus Hessinger
 
 # Einleitung
 Im Rahmen dieses Versuchs soll das Knobelspiel [Türme von Hanoi](https://de.wikipedia.org/wiki/T%C3%BCrme_von_Hanoi "Wikipedia: Türme von Hanoi") mit einem Roboterarm mit sieben Freiheitsgraden gelöst werden. Dazu muss nicht nur ein Algorithmus zur Lösung des theoretischen Problems implementiert werden, sondern auch die Schwierigkeiten gelöst werden, die bei der Bedienung eines Roboters bei einer solchen Aufgabenstellung entstehen.
