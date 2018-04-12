@@ -22,7 +22,7 @@ In ROS arbeitet man in sogenannten _Workspaces_. Für diesen Versuch wurde berei
 
 Euer Workspace heißt __hanoi\_ws__ und befindet sich unter __/home/mlab8/ROS/__. Ihr werdet nur die Datei __hanoi\_iiwa\_node.cpp__ bearbeiten, die sich im Ordner __src__ des Pakets __hanoi\_students__ befindet. Diese kann mit einem Texteditor eurer Wahl geöffnet werden. Vorinstalliert ist Sublime Text, der auch Syntax Highlighting beherrscht.
 
-# Vorbereitung
+## Vorbereitung
 
 # Versuchsnachmittag
 ## Schreiben des Programms
