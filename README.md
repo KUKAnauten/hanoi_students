@@ -64,17 +64,27 @@ der folgenden Transformationsbeziehung ausdrücken (vergleiche Abbildung).
 
 ![transformationsbeispiel](https://user-images.githubusercontent.com/38288915/38779526-f8ada9c0-40c9-11e8-8dfa-9ab866b8d6d9.PNG)
 
+### 2.3.2 Euler-Winkel
+Eine weitere Möglichkeit zur Angabe der Orientierung bietet die Euler-Winkel-Darstellung. Mit dieser lässt sich die 3x3 Rotationsmatrix aus dem vorherigen Abschnitt auf eine Drehung _Theta_ (Element R^3) mit insgesamt drei Rotationen darstellen. Dabei wird als erstes das Koordinatensystem um die z-Achse um den Winkel _alpha_ gedreht. Danach wird um die y'-Achse (resultierend aus der ersten Drehung) um den Winkel _beta_ gedreht. Schließlich wird nch um die z''-Achse (resultierend aus der zweiten Drehung) um den Winkel _gamma_ gedreht. Dies wird auch als ZYZ-Euler-Winkel-Transformation genannt.
+
+Eine spezielle Variante der Euler-Winkel-Darstellung ist die Roll-Pitch-Yaw-Darstellung (Roll-Nick-Gier). Dabei wird um alle drei Achsen nacheinander um die Wikel _alpha_, _beta_ und _gamma_ gedreht.
+
 ### 2.3.3 Arbeitsräume
 
+### 2.3.4 Vorwärts- und Inverskinematik
 
 ## 2.4 Vorbereitungsaufgaben
-Die Vorbereitungsaufgaben sollen das Verständnis weiter fördern und erfordern Recherche! Dazu kann sowohl [1] als auch eigene Recherchen zu den Thematiken weiterhelfen.
+Die Vorbereitungsaufgaben sollen das Verständnis weiter fördern und erfordern Recherche! Dazu können sowohl [1] als auch eigene Recherchen zu den Thematiken weiterhelfen.
 
 1. Was bedeutet Redundanz speziell im Sinne der Robotik und was kann damit bewirkt werden?
 
 2. Was sind homogene Koordinaten und welchen Vorteil bringen sie mit sich?
 
-3.
+3. Stellen Sie die Rotationsmatrizen für Rotationen um die x-, y- und z-Achse auf.
+
+4. Stellen Sie die Gesamtrotationsmatrix der ZYZ-Euler-Winkel-Transformation auf (Hinweis: Nacheinanderfolgende Rotationen werden durch Multiplikation der jeweiligen Rotationsmatrizen dargestellt.)
+
+5.
 
 
 # 3. Versuchsnachmittag
