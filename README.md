@@ -60,8 +60,7 @@ während sich die Orientierung des körperfesten gegenüber des Referenzkoordina
 beschreiben lässt. Ist ein Punkt _d_ bezüglich _S_B_ gegeben, lässt sich dieser relativ zu Bezugssystem _S_A_ mithilfe
 der folgenden Transformationsbeziehung ausdrücken.
 
-
-
+![transformationsbeziehung](https://user-images.githubusercontent.com/38288915/38779297-91b1b192-40c6-11e8-8d6a-add71dd671e8.PNG)
 
 ### 2.3.2 Homogene Koordinaten
 
