@@ -57,8 +57,9 @@ während sich die Orientierung des körperfesten gegenüber des Referenzkoordina
 
 ![rotationsteil_pose](https://user-images.githubusercontent.com/38288915/38779248-1336e12a-40c6-11e8-8271-0149b23c3c10.PNG)
 
-beschreiben lässt. Ist ein Punkt d bezüglich SB gegeben, lässt sich dieser relativ zu Bezugssystem SA mithilfe
-der Transformationsbeziehung
+beschreiben lässt. Ist ein Punkt _d_ bezüglich _S_B_ gegeben, lässt sich dieser relativ zu Bezugssystem _S_A_ mithilfe
+der folgenden Transformationsbeziehung ausdrücken.
+
 
 
 
