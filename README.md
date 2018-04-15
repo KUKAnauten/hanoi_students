@@ -46,8 +46,10 @@ Euer Workspace heißt __hanoi\_ws__ und befindet sich unter __/home/mlab8/ROS/__
 ## 2.3 Grundlagen
 Für das Arbeiten mit und an dem Roboter sind einige Grundlagen der Roboik sowie mathematische Grundlagen notwendig. In diesem Abschnitt wird kanpp auf die relevanten Grundlagen eingegangen. Für tiefergehendes Verständnis wird auf [1] verwiesen.
 
-### 2.3.1 Koordinatentransformationen
+### 2.3.1 Koordinatentransformationen und Pose
+Ein Roboter besteht aus einer definierten Anzahl Glieder. Serielle Manipulatoren zeichnen sich dadurch aus, dass zwei aufeinanderfolgende Glieder stets durch exakt ein gemeinsames Gelenk miteinander in Verbindung stehen. Es lassen sich sowohl translatorische (Lineargelenk), wie auch rotatorische (Drehgelenk) Ausführungen unterscheiden, wobei sich beim Aufbau serieller Roboter das Drehgelenk etabliert hat. So handelt es sich auch bei der Verbindung der Glieder des genutzten Roboters ausschließlich um Drehgelenke, weshalb sich im Folgenden auf deren Beschreibung beschränkt wird. Das letzte Glied der kinematischen Kette wird als Endeffektor bezeichnet. Diese Bezeichnung ist sowohl für das Endstück des Roboters, beispielsweise den Flansch, als auch für ein Werkzeug (Tool) gebräuchlich, welches gegebenenfalls zusätzlich an einem Flansch befestigt ist.
 
+Für die Umsetzung vorgegebener Aufgaben und Bewegungsabläufe des Endeffektors ist das Wissen über dessen Pose von Bedeutung. Die Pose eines Körpers wird stets durch seine relative Lage zu einem anderen Körper beschrieben [29]. Die Pose beinhaltet hierbei sowohl die relative Position als auch Orientierung des Körpers. Für den Anwendungsfall eines seriellen Manipulators bedeutet dies, dass die Lage des körperfesten Koordinatensystem S_b (engl. frame) eines Gliedes B durch die beiden genannten Komponenten bezüglich eines Referenzsystems, des Koordinatensystems S_A des vorherigen Körpers A, festgelegt ist.
 
 ### 2.3.2 
 
