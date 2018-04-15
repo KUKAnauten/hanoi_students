@@ -64,13 +64,17 @@ der folgenden Transformationsbeziehung ausdrücken (vergleiche Abbildung).
 
 ![transformationsbeispiel](https://user-images.githubusercontent.com/38288915/38779526-f8ada9c0-40c9-11e8-8dfa-9ab866b8d6d9.PNG)
 
-### 2.3.2 Homogene Koordinaten
-
-
 ### 2.3.3 Arbeitsräume
 
 
 ## 2.4 Vorbereitungsaufgaben
+Die Vorbereitungsaufgaben sollen das Verständnis weiter fördern und erfordern Recherche! Dazu kann sowohl [1] als auch eigene Recherchen zu den Thematiken weiterhelfen.
+
+1. Was bedeutet Redundanz speziell im Sinne der Robotik und was kann damit bewirkt werden?
+
+2. Was sind homogene Koordinaten und welchen Vorteil bringen sie mit sich?
+
+3.
 
 
 # 3. Versuchsnachmittag
