@@ -61,6 +61,7 @@ beschreiben lässt. Ist ein Punkt _d_ bezüglich _S_B_ gegeben, lässt sich dies
 der folgenden Transformationsbeziehung ausdrücken (vergleiche Abbildung).
 
 ![transformationsbeziehung](https://user-images.githubusercontent.com/38288915/38779297-91b1b192-40c6-11e8-8d6a-add71dd671e8.PNG)
+
 ![transformationsbeispiel](https://user-images.githubusercontent.com/38288915/38779526-f8ada9c0-40c9-11e8-8dfa-9ab866b8d6d9.PNG)
 
 ### 2.3.2 Homogene Koordinaten
