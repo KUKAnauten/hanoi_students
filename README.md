@@ -83,11 +83,9 @@ Die Vorbereitungsaufgaben sollen das Verständnis weiter fördern und erfordern 
 
 2. Was sind homogene Koordinaten und welchen Vorteil bringen sie mit sich?
 
-3. Stellen Sie die Rotationsmatrizen für Rotationen um die x-, y- und z-Achse auf.
+3. Stellen Sie die Rotationsmatrizen für Rotationen um die x-, y- und z-Achse auf. Wie lautet die Gesamtrotationsmatrix der ZYZ-Euler-Winkel-Transformation? (Hinweis: Nacheinanderfolgende Rotationen werden durch Multiplikation der jeweiligen Rotationsmatrizen dargestellt)
 
-4. Stellen Sie die Gesamtrotationsmatrix der ZYZ-Euler-Winkel-Transformation auf (Hinweis: Nacheinanderfolgende Rotationen werden durch Multiplikation der jeweiligen Rotationsmatrizen dargestellt.)
-
-5. MAchen Sie sich mit dem Knobelspiel Türme von Hanoi vertraut und schauen Sie sich 
+4. Machen Sie sich mit dem Knobelspiel Türme von Hanoi vertraut und schauen Sie sich 
 
 
 # 3. Versuchsnachmittag
