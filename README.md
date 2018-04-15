@@ -44,13 +44,16 @@ In ROS arbeitet man in sogenannten _Workspaces_. Für diesen Versuch wurde berei
 Euer Workspace heißt __hanoi\_ws__ und befindet sich unter __/home/mlab8/ROS/__. Ihr werdet nur die Datei __hanoi\_iiwa\_node.cpp__ bearbeiten, die sich im Ordner __src__ des Pakets __hanoi\_students__ befindet. Diese kann mit einem Texteditor eurer Wahl geöffnet werden. Vorinstalliert ist Sublime Text, der auch Syntax Highlighting beherrscht.
 
 ## 2.3 Grundlagen
-Für das Arbeiten mit und an dem Roboter sind einige Grundlagen der Roboik sowie mathematische Grundlagen notwendig. In diesem Abschnitt wird kanpp auf die relevanten Grundlagen eingegangen. Für tiefergehendes Verständnis wird auf [] verwiesen.
+Für das Arbeiten mit und an dem Roboter sind einige Grundlagen der Roboik sowie mathematische Grundlagen notwendig. In diesem Abschnitt wird kanpp auf die relevanten Grundlagen eingegangen. Für tiefergehendes Verständnis wird auf [1] verwiesen.
 
-### 2.3.1
+### 2.3.1 Koordinatentransformationen
 
-### 2.3.2
+
+### 2.3.2 
+
 
 ### 2.3.3
+
 
 ## 2.4 Vorbereitungsaufgaben
 
@@ -96,3 +99,4 @@ Ist der Code (syntaktisch) fehlerfrei übersetzt worden, könnt ihr ihn mit dem 
 Im Fenster der Visualisierungssoftware RViz seht ihr dann die geplanten Bewegungen. Wenn für einen Befehl der Wert `approvalRequired` auf `true` gesetzt wurde, wird die Bewegung jedoch nicht ausgeführt. Ist man sich sicher, dass die Bewegung Kollisionsfrei durchgeführt werden kann, klickt man dann in RViz auf _Next_.
 
 # 4. Quellen
+[1] Spong, Mark W.: _Robot Modeling and Control_, 1. Edition, 2005
