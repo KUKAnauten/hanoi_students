@@ -69,9 +69,8 @@ Eine weitere Möglichkeit zur Angabe der Orientierung bietet die Euler-Winkel-Da
 
 Eine spezielle Variante der Euler-Winkel-Darstellung ist die Roll-Pitch-Yaw-Darstellung (Roll-Nick-Gier). Dabei wird um alle drei Achsen nacheinander um die Wikel _alpha_, _beta_ und _gamma_ gedreht.
 
-### 2.3.3 Arbeitsräume
-
-### 2.3.4 Vorwärts- und Inverskinematik
+### 2.3.3 Arbeitsräume (Joint Space und Task Space)
+Der Joint Space beschreibt die Konfiguration der gesamten kinematischen Kette des Roboters anhand seiner Gelenkparameter _qi_. Diese enthalten im Falle rotatorischer Gelenke ihre jeweiligen Drehwinkel. Seine Dimension entspricht der Zahl der _n_ Freiheitsgrade des Roboters und wird durch den Vektor _q = (q1 . . . qn)T_ (T steht für transponiert) (Element R^n) gebildet.
 
 ## 2.4 Vorbereitungsaufgaben
 Die Vorbereitungsaufgaben sollen das Verständnis weiter fördern und erfordern Recherche! Dazu können sowohl [1] als auch eigene Recherchen zu den Thematiken weiterhelfen.
@@ -84,7 +83,7 @@ Die Vorbereitungsaufgaben sollen das Verständnis weiter fördern und erfordern 
 
 4. Stellen Sie die Gesamtrotationsmatrix der ZYZ-Euler-Winkel-Transformation auf (Hinweis: Nacheinanderfolgende Rotationen werden durch Multiplikation der jeweiligen Rotationsmatrizen dargestellt.)
 
-5.
+5. MAchen Sie sich mit dem Knobelspiel Türme von Hanoi vertraut und schauen Sie sich 
 
 
 # 3. Versuchsnachmittag
