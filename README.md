@@ -72,6 +72,10 @@ Eine spezielle Variante der Euler-Winkel-Darstellung ist die Roll-Pitch-Yaw-Dars
 ### 2.3.3 Arbeitsräume (Joint Space und Task Space)
 Der Joint Space beschreibt die Konfiguration der gesamten kinematischen Kette des Roboters anhand seiner Gelenkparameter _qi_. Diese enthalten im Falle rotatorischer Gelenke ihre jeweiligen Drehwinkel. Seine Dimension entspricht der Zahl der _n_ Freiheitsgrade des Roboters und wird durch den Vektor _q = (q1 . . . qn)T_ (T steht für transponiert) (Element R^n) gebildet.
 
+Der Taskspace, auch Operational Space oder Arbeitsraum genannt, dient hingegen der Beschreibung der Pose des Endeffektors bezüglich der Basis des Roboters in kartesischen Koordinaten. Die Dimension des Arbeitsraumes entspricht der Anzahl der _m_ DOF, welche zur Erledigung der vorgegebenen Aufgabe zur Verfügung stehen. Bei einer Aufgabe im dreidimensionalen, wie z.B. dem Führen und Ausrichten einer Nadel, sind dies m = 6 Freiheitsgrade, je drei für Position und Orientierung. Die Konfiguration des Endeffektors _x_ee_, wird somit anhand seiner generalisierten Koordinaten bezüglich Position _p_ee_ und Orientierung _theta_ee_ beschrieben.
+
+Die Pose im Task Space lässt sich mithilfe der nichtlinearen Funktion _f(*)_ in Abhängigkeit der Joint Space Parameter angeben als _x = f(q)_.
+
 ## 2.4 Vorbereitungsaufgaben
 Die Vorbereitungsaufgaben sollen das Verständnis weiter fördern und erfordern Recherche! Dazu können sowohl [1] als auch eigene Recherchen zu den Thematiken weiterhelfen.
 
