@@ -51,10 +51,10 @@ Ein Roboter besteht aus einer definierten Anzahl Glieder. Serielle Manipulatoren
 
 Für die Umsetzung vorgegebener Aufgaben und Bewegungsabläufe des Endeffektors ist das Wissen über dessen Pose von Bedeutung. Die Pose eines Körpers wird stets durch seine relative Lage zu einem anderen Körper beschrieben. Die Pose beinhaltet hierbei sowohl die relative Position als auch Orientierung des Körpers. Für den Anwendungsfall eines seriellen Manipulators bedeutet dies, dass die Lage des körperfesten Koordinatensystem S_B (engl. frame) eines Gliedes B durch die beiden genannten Komponenten bezüglich eines Referenzsystems, des Koordinatensystems S_A des vorherigen Körpers A, festgelegt ist. Die Position von S_A gegenüber S_B ist charakterisiert über eine Translation, darstellbar durch den Vektor _p_ (Element R^3):
 
-### 2.3.2 
+### 2.3.2 Homogene Koordinaten
 
 
-### 2.3.3
+### 2.3.3 Arbeitsräume
 
 
 ## 2.4 Vorbereitungsaufgaben
