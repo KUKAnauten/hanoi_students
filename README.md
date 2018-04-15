@@ -55,6 +55,11 @@ Für die Umsetzung vorgegebener Aufgaben und Bewegungsabläufe des Endeffektors 
 
 während sich die Orientierung des körperfesten gegenüber des Referenzkoordinatensystems durch die (3x3) Rotationsmatrix _R_
 
+![rotationsteil_pose](https://user-images.githubusercontent.com/38288915/38779248-1336e12a-40c6-11e8-8271-0149b23c3c10.PNG)
+
+beschreiben lässt.
+
+
 
 ### 2.3.2 Homogene Koordinaten
 
