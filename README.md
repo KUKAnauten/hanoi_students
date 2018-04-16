@@ -84,6 +84,8 @@ Die Vorbereitungsaufgaben sollen das Verständnis weiter fördern und erfordern 
 
 4. Machen Sie sich mit dem Knobelspiel Türme von Hanoi vertraut. Hier finden Sie ein gutes Beispiel zum [Testen der Türme von Hanoi](https://www.mathematik.ch/spiele/hanoi_mit_grafik/). Verdeutlichen Sie sich das Prinzip der Rekursion und und schreiben Sie ein Python-Skript zum Lösen des Knobelspiels. Zum Anzeigen kann der _print_-Befehl, der dann bei der Ausführung des Programms zeigen sollte, welches Plättchen von einem zum anderen Turm bewegt wird. Als IDE für Python wird PyCharm empfohlen (alternativ auch WinPy).
 
+5. Da die Klasse [RobotInterface](https://htmlpreview.github.io/?https://raw.githubusercontent.com/KUKAnauten/iimoveit/master/doc/html/c%2B%2B/classiimoveit_1_1RobotInterface.html "RobotInterface API") im Praktikumsversuch genutzt wird, sollten Sie die Methoden dieser Klasse anschauen.
+
 # 3. Versuchsnachmittag
 ## 3.1 Programmstruktur
 Zur Durchführung der Aufgabe wurde die Klasse `HanoiRobot` erstellt, die alle Methoden von [RobotInterface](https://htmlpreview.github.io/?https://raw.githubusercontent.com/KUKAnauten/iimoveit/master/doc/html/c%2B%2B/classiimoveit_1_1RobotInterface.html "RobotInterface API") erbt.
