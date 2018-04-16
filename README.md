@@ -50,11 +50,11 @@ Für die Umsetzung vorgegebener Aufgaben und Bewegungsabläufe des Endeffektors 
 
 ![translationsteil_pose](https://user-images.githubusercontent.com/38288915/38779231-c6bf8252-40c5-11e8-83d7-7b89900c703e.PNG).
 
-während sich die Orientierung des körperfesten gegenüber des Referenzkoordinatensystems durch die (3x3) Rotationsmatrix _R_
+Die Orientierung des körperfesten gegenüber des Referenzkoordinatensystems durch die (3x3) Rotationsmatrix _R_ beschreiben:
 
-![rotationsteil_pose](https://user-images.githubusercontent.com/38288915/38779248-1336e12a-40c6-11e8-8271-0149b23c3c10.PNG)
+![rotationsteil_pose](https://user-images.githubusercontent.com/38288915/38779248-1336e12a-40c6-11e8-8271-0149b23c3c10.PNG).
 
-beschreiben lässt. Ist ein Punkt _d_ bezüglich _S_B_ gegeben, lässt sich dieser relativ zu Bezugssystem _S_A_ mithilfe
+Ist ein Punkt _d_ bezüglich _S_B_ gegeben, lässt sich dieser relativ zu Bezugssystem _S_A_ mithilfe
 der folgenden Transformationsbeziehung ausdrücken (vergleiche Abbildung).
 
 ![transformationsbeziehung](https://user-images.githubusercontent.com/38288915/38779297-91b1b192-40c6-11e8-8d6a-add71dd671e8.PNG)
