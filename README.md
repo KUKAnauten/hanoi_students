@@ -85,8 +85,7 @@ Die Vorbereitungsaufgaben sollen das Verständnis weiter fördern und erfordern 
 
 3. Stellen Sie die Rotationsmatrizen für Rotationen um die x-, y- und z-Achse auf. Wie lautet die Gesamtrotationsmatrix der ZYZ-Euler-Winkel-Transformation? (Hinweis: Nacheinanderfolgende Rotationen werden durch Multiplikation der jeweiligen Rotationsmatrizen dargestellt)
 
-4. Machen Sie sich mit dem Knobelspiel Türme von Hanoi vertraut. Hier ist ein gutes Beispiel zum [Testen von Türme von Hanoi](https://www.mathematik.ch/spiele/hanoi_mit_grafik/). Schauen Sie sich dazu 
-
+4. Machen Sie sich mit dem Knobelspiel Türme von Hanoi vertraut. Hier finden Sie ein gutes Beispiel zum [Testen der Türme von Hanoi](https://www.mathematik.ch/spiele/hanoi_mit_grafik/). Verdeutlichen Sie sich das Prinzip der Rekursion und und schreiben Sie ein Python-Skript zum Lösen des Knobelspiels. Zum Anzeigen kann der _print_-Befehl, der dann bei der Ausführung des Programms zeigen sollte, welches Plättchen von einem zum anderen Turm bewegt wird. Als IDE für Python wird PyCharm empfohlen (alternativ auch WinPy).
 
 # 3. Versuchsnachmittag
 ## 3.1 Programmstruktur
