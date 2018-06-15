@@ -5,6 +5,9 @@
   <!-- Model of the iiwa to use : iiwa7, iiwa14 -->
   <arg name="model" default="iiwa14"/>
   <arg name="debug" default="false"/>
+  <!-- Set parameter to determine whether to use linear motion (not visible in simulation) -->
+  <arg name="sim" default="true"/>
+  <param name="/$(arg robot_name)/sim" type="bool" value="$(arg sim)"/>
 
   <group ns="$(arg robot_name)" unless="$(arg debug)">
     <node name="hanoi" pkg="hanoi_students" type="hanoi" respawn="false" output="screen">
