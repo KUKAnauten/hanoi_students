@@ -87,7 +87,22 @@ Die Vorbereitungsaufgaben sollen das Verständnis weiter fördern und erfordern 
 5. Da die Klasse [RobotInterface](https://htmlpreview.github.io/?https://raw.githubusercontent.com/KUKAnauten/iimoveit/master/doc/html/c%2B%2B/classiimoveit_1_1RobotInterface.html "RobotInterface API") im Praktikumsversuch genutzt wird, sollten Sie sich mit den Methoden und Eigenschaften dieser Klasse vertraut machen.
 
 # 3. Versuchsnachmittag
-## 3.1 Programmstruktur
+## 3.1 Versionsverwaltung mit Git
+Die Ergebnisse des Versuchsnachmittags werden mit der Software Git archiviert. Hierzu sind zu Beginn die folgenden Schritte durchzuführen:
+
+1. Navigieren Sie im Terminal in das Paket __hanoi\_students__.
+
+2. Überprüfen Sie den aktuellen Branch: `git branch`. Sie sollten sich auf dem master-Branch befinden.
+
+3. Erstellen Sie einen neuen Branch mit dem Datum des Versuchsnachmittags: `git branch versuch_JJJJMMTT`. 
+
+4. Überprüfen Sie den aktuellen Branch erneut.
+
+5. Wechseln Sie auf den zuvor erstellen Branch: `git checkout versuch_JJJJMMTT`.
+
+Am Ende des Versuchsnachmittags werden Sie einen Commit anlegen und diesen auf ein externes Repository hochladen (s.&nbsp;3.6).
+
+## 3.2 Programmstruktur
 Zur Durchführung der Aufgabe wurde die Klasse `HanoiRobot` erstellt, die alle Methoden von [RobotInterface](https://htmlpreview.github.io/?https://raw.githubusercontent.com/KUKAnauten/iimoveit/master/doc/html/c%2B%2B/classiimoveit_1_1RobotInterface.html "RobotInterface API") erbt.
 
 ___Achtung!___ Methoden, die mit _publish_ oder _run_ beginnen, sollen im Rahmen dieses Versuchs jedoch ignoriert werden, denn hierbei wird der Bahnplanungsschritt umgangen und kann zu unkontrollierbarem Verhalten führen! MoveIt! kann zwar Trajektorien berechnen, die Kollisionen vermeiden, jedoch müssen dazu Objekte über Sensoren erkannt werden oder per Hand in die Planungsumgebung eingefügt werden. Dies ist in unserer Umgebung noch nicht der Fall, weshalb geplante Bewegungen vor der Ausführung bestätigt werden müssen und auch zuerst im Simulator Gazebo geprüft werden sollen.
@@ -97,34 +112,45 @@ Zum Bewegen sollten momentan am besten nur die Methoden `planAndMove`, `planAndM
 
 Die Methode `moveTower` soll den Algorithmus enthalten und dabei die Methode `moveSlice` verwenden, in der der Roboter eine Scheibe von einem zum anderen Stab bewegen soll. Zu beachten ist, dass beim Bewegen des Roboters mit `planAndMove` nur die Anfangs- und Endpose vorgegeben sind. Dazwischen bewegt sich der Roboter nicht auf einer geraden Linie, sondern so, wie es von den Gelenken am besten passt - dabei gibt es natürlich unendlich viele Lösungen, jenachdem, mit welchem Gütemaßen man die Planung durchführt. Weiterhin hält der Roboter bei Erreichen der Zielpose an, anstatt bestimmte Wegpunkte einfach zu durchfahren.
 
-## 3.2 Verwendung von `planAndMove`und `moveAlongCartesianPathInWorldCoords`
+## 3.3 Verwendung von `planAndMove`und `moveAlongCartesianPathInWorldCoords`
 Diese Methoden sollen zur Bewegungsplanung- und Durchführung verwendet werden.  Es reicht aus, von den überladenen Methoden `planAndMove(PoseStamped &target_pose, bool approvalRequired)` zu verwenden. Diese Methode erwartet eine `geometry_msgs::PoseStamped` als Parameter und einen `bool`, der festlegt, ob vor der Ausführung der Bewegung eine manuelle Bestätigung erforderlich ist. `moveAlongCartesianPathInWorldCoords` erwartet einen `std::vector<geometry_msgs::Pose>`, was etwa einer `List` in Java entspricht, welche einzelne Zielposen enthält. Das ist dann nützlich, wenn man den Roboter entlang einer Bahn bewegen will, oder wenn der Roboter Wegpunkte abfahren soll ohne anzuhalten. Da der Roboter die Stäbe nicht abknicken soll, wenn er eine Scheibe gegriffen hat, oder wenn er sich zwischen zwei Stäben bewegt, sollten hier dem Roboter besser explizit Wegpunkte angegeben werden. Vor allem beim Entnehmen einer Scheibe von einem Stapel sollten dem Roboter Wegpunkte entlang des Stabs in Zentimeterabständen angegeben werden, bis er genügend Abstand vom Stab hat. Die Parameter `eef_step` und `jump_threshold` sollen zu jeweils `0.01` und `0.0` gesetzt werden.
 
 Die Klasse `HanoiRobot` enthält die Membervariablen `base_pose_` und ein Array `tower_poses_`. Darin sind die Endeffektorposen des Roboters gespeichert, bei denen sich der Greifer entweder oberhalb des mittleren Stabs oder (mit den Fingerspitzen) auf Höhe der untersten Scheibe einer der drei Türme befindet. Auf diese kann man in den Methoden zugreifen, um diese Posen anzufahren, oder ausgehend von diesen andere Posen zu berechnen. Diese sind als `geometry_msgs::PoseStamped` gespeichert. Es reicht jedoch aus, nur den Member `pose` davon zu verwenden, dieser ist vom Typ `geometry_msgs::Pose`.
 
 Die Klasse `Pose`, ist eine von ROS-Messages abgeleitete, automatisch generiert Klasse. Sie enthält die Membervariablen `position` und `orientation`. Dabei enthält `position` wiederum die _doubles_ `x`, `y` und `z`, welche die Translation einer Pose in Weltkoordinaten darstellen. Das Weltkoordinatensystem befindet sich auf dem Boden unter der Basis des Roboters. `orientation` enthält weiterhin die Variablen `x`, `y`, `z` und `w`, die die Orientierung der Pose als [Quaternion](http://www.mathepedia.de/Quaternionen.html "Mathepedia - Quaternionen") darstellen.
 
-## 3.3 Setzen der Turmposen und der Basispose
+## 3.4 Setzen der Turmposen und der Basispose
 Die Basispose, bei der sich der Endeffektor oberhalb aller Türme befindet, und die Pose des Turm 0 (wenn man auf den Roboter schaut, der linke Turm) werden bereits in der `main`-Funktion gesetzt. Die Basispose ist in Gelenkwinkeln angegeben, da diese Darstellung eindeutig ist. So ist sichergestellt, dass der Roboter aus einer Ausgangslage agiert, aus der er nicht so schnell in die Gelenkwinkelbegrenzungen gelangt. Wegen der Redundanz (der Roboter hat 7 Freiheitsgrade) kann eine Pose im kartesischen Raum (6 Freiheitsgrade) durch verschiedene Kombinationen von Gelenkwinkeln erreicht werden. Sie müssen zur ordnungsgemäßen Funktion des Codes noch die Pose der zwei weiteren Türme setzen (in der `main`-Funktion die auskommentierten Zeilen durch richtigen Code ersetzen).
 
-## 3.4 Ausführen des Codes
-### 3.4.1 Starten der ROS-Umgebung und benötigter Nodes
+## 3.5 Ausführen des Codes
+### 3.5.1 Starten der ROS-Umgebung und benötigter Nodes
 Um das geschriebene Programm auszuführen, müssen zuerst die benötigten Nodes gestartet werden. Dazu geht man wie folgt vor:
 
 1. Falls mit dem echten Roboter gearbeitet werden soll, muss zuerst der Roboter hochgefahren werden
 2. Im Dateibrowser zum Workspace wechseln, Rechtsklick in einen leeren Bereich -> Terminal hier öffnen
 3. Als erstes wird per `roscore` der Hauptprozess von ROS gestartet
-4. Mit \[STRG\]+\[SHIFT\]+\[TAB\] einen neuen Tab öffnen, dann über den Befehl `sudoros` Adminrechte für dieses Terminal erlangen und mit diesen dann per `roslaunch robotiq_s_model_control s_model_ethercat.launch` den Node zur Steuerung des Greifers starten. Hier kann es gut sein, dass die EtherCAT Verbindung nicht aufgebaut wird. Dann muss man so lange den Befehl ausführen (mit der Pfeil-nach-oben-Taste den letzten Befehl in den Eingabebereich holen und mit Return bestätigen), bis die Meldung kommt, dass ein Slave gefunden und konfiguriert wurde.
+4. Mit \[STRG\]+\[SHIFT\]+\[T\] einen neuen Tab öffnen, dann über den Befehl `sudoros` Adminrechte für dieses Terminal erlangen und mit diesen dann per `roslaunch robotiq_s_model_control s_model_ethercat.launch` den Node zur Steuerung des Greifers starten. Hier kann es gut sein, dass die EtherCAT Verbindung nicht aufgebaut wird. Dann muss man so lange den Befehl ausführen (mit der Pfeil-nach-oben-Taste den letzten Befehl in den Eingabebereich holen und mit Return bestätigen), bis die Meldung kommt, dass ein Slave gefunden und konfiguriert wurde.
 4. Neuen Tab öffnen, per `roslaunch iiwa14_s_model_moveit run_move_group.launch` alle nötigen Nodes und Konfigurierungen starten, um den Roboter anzusteuern. Fall mit dem echten Roboter gearbeitet werden soll, muss an den Befehl ein `sim:=false` angehängt werden!
 6. Falls im vorherigen Schritt `sim:=false` gesetzt wurde, muss jetzt die RobotApplication "ROSSmartServo" über das SmartPad des Roboters gestartet werden. Ansonsten wurde die Simulationssoftware Gazebo gestartet, in der ihr sehen könnt, wie sich der Roboter voraussichtlich bewegen wird.
 7. Als Nächstes könnt ihr nun euren Node starten, siehe nächster Abschnitt
 
-### 3.4.2 Kompilieren und Starten des Hanoi Nodes
+### 3.5.2 Kompilieren und Starten des Hanoi Nodes
 Habt ihr euren Code geändert, müsst ihr ihn erst kompilieren (sowie assemblen und linken). Dazu öffnet ihr wieder einen neuen Tab und führt darin den Befehl `catkin build hanoi_students` aus. Enthält euer Code Fehler, wird der Compiler dies anzeigen und ihr müsst diese erst beheben.
 
 Ist der Code (syntaktisch) fehlerfrei übersetzt worden, könnt ihr ihn mit dem Befehl `roslaunch hanoi_students hanoi.launch` ausführen.
 
 Im Fenster der Visualisierungssoftware RViz seht ihr dann die geplanten Bewegungen. Wenn für einen Befehl der Wert `approvalRequired` auf `true` gesetzt wurde, wird die Bewegung jedoch nicht ausgeführt. Ist man sich sicher, dass die Bewegung kollisionsfrei durchgeführt werden kann, klickt man dann in RViz auf _Next_.
+
+## 3.6 Archivierung des Codes
+Abschließend werden die Ergebnisse des Versuchsnachmittags archiviert. Hierzu sind die folgenden Schritte durchzuführen:
+
+1. Überprüfen Sie den Zustand des lokalen Repositorys: `git status`. 
+
+2. Fügen Sie die geänderte Datei zur Staging Area hinzu: `git add src/hanoi_iiwa_node.cpp`.
+
+3. Legen Sie einen Commit an: `git commit -m "insert commit message"`.
+
+4. Laden Sie Ihren Commit in das externe Repository origin hoch: `git push origin versuch_JJJJMMTT`.
 
 # 4. Quellen
 [1] Spong, Mark W.: _Robot Modeling and Control_, 1. Edition, 2005
