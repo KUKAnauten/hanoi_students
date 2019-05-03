@@ -156,4 +156,4 @@ Abschließend werden die Ergebnisse des Versuchsnachmittags archiviert. Hierzu s
 [1] Spong, Mark W.: _Robot Modeling and Control_, 1. Edition, 2005
 
 # 5. Autorenschaft
-Diese Anleitung und Einführung ist geschrieben von Laura Bielenberg, Romol Chadda, Marcus Ebner und Markus Hessinger.
+Diese Anleitung und Einführung ist geschrieben von Laura Bielenberg, Romol Chadda, Marcus Ebner, Markus Hessinger und Niklas Schäfer.
