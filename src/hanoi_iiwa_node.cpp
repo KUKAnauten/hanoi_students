@@ -166,8 +166,28 @@ public:
   void moveSlice(int from, int to, bool approvalRequired) {
     assert(from >= 0 && from <= 2);
     assert(to >= 0 && to <= 2);
+    double sicherheitsabstand=0.05;
+    double stabhoehe=0.10;
+    double schwammhoehe=0.00;
+    geometry_msgs::PoseStamped fromPose = getTowerPose(from);
+    fromPose.pose.position.z+=sicherheitsabstand+ stabhoehe;
+    geometry_msgs::PoseStamped fromPoseDown = getTowerPose(from);
+    fromPoseDown.pose.position.z+=(tower_nSlices_[from]*slice_height_) + schwammhoehe-0.005;
+    geometry_msgs::PoseStamped toPose = getTowerPose(to);
+    toPose.pose.position.z+=sicherheitsabstand+ stabhoehe;
 
-    // Hier Code einfuegen
+    gripperOpen();
+    planAndMove(fromPose,approvalRequired);
+    planAndMove(fromPoseDown,approvalRequired);
+    gripperClose();
+    tower_nSlices_[from]-=1;
+    waitForApproval();
+    publishPoseGoalLinear(fromPose);
+    planAndMove(toPose,approvalRequired);
+    gripperOpen();
+    tower_nSlices_[to]+=1;
+
+    
   }
 
   void moveTower(int height, int from, int to, int with, bool approvalRequired) {
@@ -175,7 +195,14 @@ public:
     assert(to >= 0 && to <= 2);
     assert(with >= 0 && with <= 2);
 
-    // Hier Code einfuegen
+    if(height<=0){ //nix machen, wenn kein Turm bewegt werden soll
+      return;
+    }
+    moveTower(height-1,from, with, to, approvalRequired); //erst den Turm eins kleiner auf das Hilfsfeld bewegen
+    moveSlice(from, to, approvalRequired); // dann den untersten Stein auf das Zielfeld bewegen
+    moveTower(height-1, with, to, from, approvalRequired); // und den Turm eins kleiner nachholen
+
+
   }
 };
 } // namespace hanoi
@@ -202,12 +229,12 @@ int main(int argc, char **argv)
   tow0_pose.pose.orientation.w = 0.0;
 
   geometry_msgs::PoseStamped tow1_pose = tow0_pose;
-  //tow1_pose.pose.position.x -= ???
-  //tow1_pose.pose.position.y += ???
+  tow1_pose.pose.position.x = 0.709-0.04;
+  tow1_pose.pose.position.y = 0.3545+0.28;
 
   geometry_msgs::PoseStamped tow2_pose = tow1_pose;
-  //tow2_pose.pose.position.x -= ???
-  //tow2_pose.pose.position.y -= ???
+  tow2_pose.pose.position.x = 0.709-0.04-0.32;
+  tow2_pose.pose.position.y = 0.3545+0.28;
 
   hanoi::HanoiRobot hanoi_robot(&node_handle, "manipulator", base_pose_jointSpace, 3, 0.01);
   hanoi_robot.setTowerPose(0, tow0_pose);
